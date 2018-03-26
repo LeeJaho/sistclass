@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- Dao 편하게 만들어준거? interface를 위해 구현한 부분-->
+<mapper namespace="com.newlecture.dao.NoteDao">
+	<!-- <select id="getList" resultType="com.newlecture.entity.Note">
+		select * from Note
+		limit ${(_parameter-1)*15}, 15
+		
+	</select> -->
+	
+	<select id="get" resultType="com.newlecture.entity.Note">
+		select * from Note where id = #{id}
+	</select>
+</mapper>
