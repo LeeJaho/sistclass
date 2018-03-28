@@ -30,4 +30,12 @@ public class MyBatisNoteDao implements NoteDao {
 		return result;
 	}
 
+	@Override
+	public int insert(Note note) {
+		NoteDao noteDao = sqlSession.getMapper(NoteDao.class);
+		
+		int result = noteDao.insert(note);
+		return 0;
+	}
+
 }

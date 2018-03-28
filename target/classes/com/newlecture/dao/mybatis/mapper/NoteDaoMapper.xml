@@ -14,4 +14,11 @@
 	<select id="get" resultType="com.newlecture.entity.Note">
 		select * from Note where id = #{id}
 	</select>
+	
+	<insert id="insert" parameterType="com.newlecture.entity.Note">
+		insert into Note(title, content, writerId)
+		values(#{title},#{content},#{writerId})
+	</insert>
+	
+	
 </mapper>

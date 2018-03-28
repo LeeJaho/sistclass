@@ -1,4 +1,4 @@
-package com.newlecture.controller;
+package com.newlecture;
 
 import java.io.IOException;
 import java.io.PrintWriter;

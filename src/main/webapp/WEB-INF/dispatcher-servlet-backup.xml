@@ -14,7 +14,17 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- annotation을 알고 있어야 예외처리 할 수 있으니까! -->
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven>
+      <mvc:message-converters> <!-- @ResponseBody로 String 처리할때 한글처리 -->
+         <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+            <property name="supportedMediaTypes">
+               <list>
+                  <value>text/html;charset=UTF-8</value>
+               </list>
+            </property>
+         </bean>
+      </mvc:message-converters>
+   </mvc:annotation-driven>
     <!-- ** 자식의 자식의 자식까지 찾는다 어디서 찾는다? -> location에서 찾는다 -->
     <mvc:resources location="/resources/" mapping="/resources/**"/>
     
@@ -48,11 +58,9 @@
       <constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg><!-- 꺼내 쓸 수 있게 함 -->
     </bean>
     
-    <bean class="com.newlecture.dao.mybatis.MyBatisNoteDao">
-    </bean>
-    
-    <bean class="com.newlecture.service.NoteService">
-    </bean>
+    <bean class="com.newlecture.dao.mybatis.MyBatisNoteDao"/>
+    <bean class="com.newlecture.service.NoteService"/>
+    <bean class="com.newlecture.service.member.NoteService"/>
   <!--  <bean name="/index" class="com.newlecture.controller.IndexController"/>
     <bean name="/note/list" class="com.newlecture.controller.note.ListController"/>
     <bean name="/note/detail" class="com.newlecture.controller.note.DetailController"/>
