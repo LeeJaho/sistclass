@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+	
+		<!-- 생성 2 / 결합 1 -->
+	<!-- Exam exam = new Exam();
+    	FlowExamConsole console = new FlowExamConsole();
+    	console.setExam(exam); -->
+    	<bean name="exam" class="com.newlecture.spring.di.Exam"/>
+    	<bean name="console" class="com.newlecture.spring.di.FlowExamConsole">
+    		<property name="exam" ref="exam"/>
+    		<!-- 객체 참조할 땐 ref에 , 값일 땐 value에 -->
+    		<!-- 원래 name -> setExam이지만 set빼고 exam 쓰면 spring이 
+    		알아서 set 찾아줌 -->
+    	</bean>
+    	
+</beans>

@@ -30,7 +30,7 @@ public class NoteController {
 	@RequestMapping("list")
 	public String list() {
 		
-		return "member/note/list";
+		return "member.note.list";
 	}
 	
 	@RequestMapping("detail")

@@ -31,10 +31,20 @@
     <!-- controller를 찾아주는 일을 하는 넘 -->
     <context:component-scan base-package="com.newlecture.controller"/>
     <!-- 위에 코드는 어노테이션을 사용할때 쓰는것 -->
+    <!-- 타일즈 설정 -->
+   	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+       <property name="definitions"  value="/WEB-INF/tiles.xml"/>
+    </bean>
+    <!-- 타일즈 인터셉트? -> 타일즈 먼저 찾고 없으면 jsp 파일 경로로 찾는거 -->
+    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+       <property name="viewClass"  value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+       <property name="order"  value="1"/>
+    </bean>
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name="prefix"  value="/WEB-INF/views/"/>
       <property name="suffix" value=".jsp" />
+      <property name="order" value="2" />
     </bean>
     
     <!-- multipart 설정? -->	    
