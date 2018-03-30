@@ -2,16 +2,28 @@ package com.newlecture.spring.di;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 
 
-//@Console
 public class FlowExamConsole implements ExamConsole{
-
+	
+	//@Qualifier("exam2")
+	@Autowired
 	private Exam exam;
 
 	public FlowExamConsole() {
-		exam = new Exam();
+		//exam = new Exam();
+	}
+	
+	
+	public FlowExamConsole(Exam exam) {
+		this.exam = exam;
+	}
+	
+	public void setExam(Exam exam) {
+		this.exam = exam;
 	}
 
 	public void input() {
@@ -21,7 +33,7 @@ public class FlowExamConsole implements ExamConsole{
 		int math;
 
 		System.out.println("┌──────────────────────────────────────────┐");
-		System.out.println("│                  Exam Input              │");
+		System.out.println("│                  Exam Input       										       │");
 		System.out.println("└──────────────────────────────────────────┘");
 
 		System.out.print("kor : ");
@@ -54,7 +66,4 @@ public class FlowExamConsole implements ExamConsole{
 		System.out.printf("avg : %+6.2f\n", avg);
 	}
 	
-	public void setExam(Exam exam) {
-		this.exam = exam;
-	}
 }

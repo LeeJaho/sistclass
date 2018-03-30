@@ -2,8 +2,6 @@ package com.newlecture.spring.di;
 
 import java.util.Scanner;
 
-import com.newlecture.ExamConsole;
-import com.newlecture.entity.Exam;
 
 public class GridExamConsole implements ExamConsole {
 
@@ -11,6 +9,10 @@ public class GridExamConsole implements ExamConsole {
 
 	public GridExamConsole() {
 		exam = new Exam();
+	}
+
+	public GridExamConsole(Exam exam) {
+		this.exam = exam;
 	}
 
 	public void input() {

@@ -1,5 +1,8 @@
 package com.newlecture.spring.di;
 
+import org.springframework.stereotype.Component;
+
+@Component("exam2")
 public class Exam {
 	private int kor;
 	private int eng;

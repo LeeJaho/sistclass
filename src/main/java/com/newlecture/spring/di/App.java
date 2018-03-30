@@ -14,10 +14,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args ) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException
-    {
+public class App{
+	
+	public static void main( String[] args ) throws InstantiationException, IllegalAccessException, ClassNotFoundException, IOException
+	{
         /*GridExamConsole console = new GridExamConsole();*/
         /*FlowExamConsole console = new FlowExamConsole();*/
     	/*Properties properties = new Properties();
@@ -36,7 +36,7 @@ public class App
         		new ClassPathXmlApplicationContext("com/newlecture/spring/di/app-context.xml");
         
         ExamConsole console = (ExamConsole) beans.getBean("console");
-    	console.input();
+    	//console.input();
         console.print();
     }
-}
+}	
