@@ -1,4 +1,4 @@
-package com.newlecture.spring.di;
+package com.newlecture.spring.aop;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,11 +33,11 @@ public class App{
     	
     	
     	//ExamConsole console = (ExamConsole) Class.forName(properties.getProperty("console")).newInstance();
-        ApplicationContext beans = new AnnotationConfigApplicationContext(NewlecAppConfig.class);
-        		//new ClassPathXmlApplicationContext("com/newlecture/spring/di/app-context.xml");
+        ApplicationContext beans = //new AnnotationConfigApplicationContext(NewlecAppConfig.class);
+        		new ClassPathXmlApplicationContext("com/newlecture/spring/aop/app-context.xml");
         
         ExamConsole console = (ExamConsole) beans.getBean("console");
-    	//console.input();
+    	console.input();
         console.print();
-    }
+    } 
 }	

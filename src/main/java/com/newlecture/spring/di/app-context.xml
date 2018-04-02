@@ -34,13 +34,13 @@
     		<constructor-arg name="math" value="40"/>
     		<constructor-arg name="eng" value="60"/>
     	</bean> -->
-    	<bean name="console" class="com.newlecture.spring.di.FlowExamConsole">
-    		<!-- <constructor-arg ref="exam"/> -->
+    	<!-- <bean name="console" class="com.newlecture.spring.di.FlowExamConsole">
+    		<constructor-arg ref="exam"/>
     		
-    		<!-- <property name="exam" ref="exam"/> -->
-    		<!-- 객체 참조할 땐 ref에 , 값일 땐 value에 -->
-    		<!-- 원래 name -> setExam이지만 set빼고 exam 쓰면 spring이 
-    		알아서 set 찾아줌 -->
-    	</bean>
+    		<property name="exam" ref="exam"/>
+    		객체 참조할 땐 ref에 , 값일 땐 value에
+    		원래 name -> setExam이지만 set빼고 exam 쓰면 spring이 
+    		알아서 set 찾아줌
+    	</bean> -->
     	
 </beans>

@@ -12,17 +12,35 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 콩자루에 없이 직접 Annotation으로 생성해달라고 할 때 그 위치를 말해줘야한다?? -->
+	<context:component-scan base-package="com.newlecture.spring.di"/>
 	
-		<!-- 생성 2 / 결합 1 -->
+	<!-- Autowired를 사용하려면 설정이 필요하다! component-scan 하면 아래 자동으로 적용
+	상속받는 관계이기 때문에 가능하다 -->
+	<!-- <context:annotation-config/> -->
+	
+		<!-- 생성 2 / 결합 1 / 지시서에서 직접 생성 -->
 	<!-- Exam exam = new Exam();
     	FlowExamConsole console = new FlowExamConsole();
     	console.setExam(exam); -->
-    	<bean name="exam" class="com.newlecture.spring.di.Exam"/>
-    	<bean name="console" class="com.newlecture.spring.di.FlowExamConsole">
-    		<property name="exam" ref="exam"/>
-    		<!-- 객체 참조할 땐 ref에 , 값일 땐 value에 -->
-    		<!-- 원래 name -> setExam이지만 set빼고 exam 쓰면 spring이 
-    		알아서 set 찾아줌 -->
+    	<!-- <bean name="exam1" class="com.newlecture.spring.di.Exam">
+    		<constructor-arg name="kor" value="50"/>
+    		<constructor-arg name="math" value="10"/>
+    		<constructor-arg name="eng" value="70"/>
     	</bean>
+    	
+    	<bean name="exam2" class="com.newlecture.spring.di.Exam">
+    		<constructor-arg name="kor" value="20"/>
+    		<constructor-arg name="math" value="40"/>
+    		<constructor-arg name="eng" value="60"/>
+    	</bean> -->
+    	<!-- <bean name="console" class="com.newlecture.spring.di.FlowExamConsole">
+    		<constructor-arg ref="exam"/>
+    		
+    		<property name="exam" ref="exam"/>
+    		객체 참조할 땐 ref에 , 값일 땐 value에
+    		원래 name -> setExam이지만 set빼고 exam 쓰면 spring이 
+    		알아서 set 찾아줌
+    	</bean> -->
     	
 </beans>

@@ -1,0 +1,77 @@
+package com.newlecture.spring.aop;
+
+import java.util.Date;
+import java.util.Scanner;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+
+
+public class FlowExamConsole implements ExamConsole{
+	
+	//@Qualifier("exam2")
+	@Autowired
+	private Exam exam;
+
+	public FlowExamConsole() {
+		//exam = new Exam();
+	}
+	
+	
+	public FlowExamConsole(Exam exam) {
+		this.exam = exam;
+	}
+	
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+
+	public void input() {
+		//System.out.println("Start : " + new Date());
+		Scanner scan = new Scanner(System.in);
+		int kor;
+		int eng;
+		int math;
+
+		System.out.println("┌──────────────────────────────────────────┐");
+		System.out.println("│                  Exam Input       										       │");
+		System.out.println("└──────────────────────────────────────────┘");
+
+		System.out.print("kor : ");
+		kor = scan.nextInt();
+		System.out.print("eng : ");
+		eng = scan.nextInt();
+		System.out.print("math : ");
+		math = scan.nextInt();
+
+		exam.setKor(kor);
+		exam.setEng(eng);
+		exam.setMath(math);
+		
+		//System.out.println("end : " + new Date());
+	}
+
+	public void print() {
+		
+		//System.out.println("Start : " + new Date());
+		int kor = exam.getKor();
+		int eng = exam.getEng();
+		int math = exam.getMath();
+		int total = exam.total();
+		float avg = exam.avg();
+
+		System.out.println("┌──────────────────────────────────────────┐");
+		System.out.println("│                Exam Print                │");
+		System.out.println("└──────────────────────────────────────────┘");
+
+		System.out.printf("kor : %3d\n", kor);
+		System.out.printf("eng : %3d\n", eng);
+		System.out.printf("math : %3d\n", math);
+		System.out.printf("total : %3d\n", total);
+		System.out.printf("avg : %+6.2f\n", avg);
+		
+		//System.out.println("end : " + new Date());
+	}
+	
+}
