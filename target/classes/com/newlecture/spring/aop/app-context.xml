@@ -15,22 +15,55 @@
   
     	<bean name="exam" class="com.newlecture.spring.aop.Exam"/>
 
-    	<bean name="console" class="com.newlecture.spring.aop.FlowExamConsole">
+    	<bean name="target" class="com.newlecture.spring.aop.FlowExamConsole">
     		<constructor-arg ref="exam"/>
     	</bean>
     	
     	<bean id="before" class="com.newlecture.spring.aop.LogBeforeAdvice"/>
     	<bean id="around" class="com.newlecture.spring.aop.LogAroundAdvice"/>
-    	
+    	<bean id="after" class="com.newlecture.spring.aop.LogReturnAdvice"/>
+    	<bean id="throws" class="com.newlecture.spring.aop.LogThrowsAdvice"/>
     	   <!-- proxy -->
 	   <bean id="console" class="org.springframework.aop.framework.ProxyFactoryBean">
 	      <property name="target" ref="target" />
 	      <property name="interceptorNames">
 	         <list>
-	            <value>before</value>
+	         	<value>expAdvisor</value>
+	         	<!-- <value>matchAdvisor</value> -->
+	         	<!-- <value>methodNameAdvisor</value> -->
+	            <!-- <value>before</value>
 	             <value>around</value>
+	             <value>after</value>
+	             <value>throws</value> -->
 	         </list>
 	      </property>
 	   </bean>
-    	
+		<!-- PointCuts -->
+		<!-- <bean id="methodNamePointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+			<property name="mappedName" value="input" />
+		</bean> -->
+	
+		<!-- Advisor -->
+		<!-- <bean id="methodNameAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+			<property name="pointcut" ref="methodNamePointcut" />
+			<property name="advice" ref="before" />
+		</bean> -->
+		
+		<!-- PointCuts + Advisor -->
+		<!-- <bean id="matchAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+			<property name="mappedName" value="input" />
+			<property name="advice" ref="before" />
+		</bean> -->
+		
+		<!-- 패턴이용 -->
+		<bean id ="expAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+			<property name="patterns">
+				<list>
+					<value>.*.input</value>
+					<!-- <value>.*.print</value> -->
+				</list>
+			</property>
+			<property name="advice" ref="before" />
+		</bean>
+		
 </beans>

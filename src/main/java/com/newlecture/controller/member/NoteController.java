@@ -28,8 +28,10 @@ public class NoteController {
 	private NoteService service;
 	
 	@RequestMapping("list")
-	public String list() {
+	public String list(Model model) {
 		
+		List<Note> notes = service.getNoteList(1);
+		model.addAttribute("notes", notes);
 		return "member.note.list";
 	}
 	

@@ -29,6 +29,7 @@ h1, h2, h3, h4, h5, h6{
 	height: 45px;
 	width: 100%;
 	position: fixed;
+	top: 0px;
 	background: #ffffff;
 	border-bottom: 1px solid #666666;
 }
@@ -60,9 +61,31 @@ h1, h2, h3, h4, h5, h6{
 			align-items: center;
 		}
 
-/* ------------.main--------------------------------------- */		
+/* ------------.main--------------------------------------- */
+.text {
+	position: relative;
+}
+
+.text-concat {
+	position: relative;
+	display: inline-block;
+	word-wrap: break-word;
+	overflow: hidden;
+	max-height: 2.4em;
+	/* (Number of lines you want visible) * (line-height) */
+	line-height: 1.2em;
+	text-align: justify;
+}
+
+.text.ellipsis::after {
+	content: "...";
+	position: absolute;
+	right: -12px;
+	bottom: 4px;
+}
+
 .main{
-	top: 45px;
+	margin-top: 45px;
 	
 }
 /*모듈단위로 > > > > >구조 들어간다*/

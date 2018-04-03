@@ -30,8 +30,6 @@ public class App{
     	console.setExam(exam);*/
     	
     	//주문명세서로 가자
-    	
-    	
     	//ExamConsole console = (ExamConsole) Class.forName(properties.getProperty("console")).newInstance();
         ApplicationContext beans = //new AnnotationConfigApplicationContext(NewlecAppConfig.class);
         		new ClassPathXmlApplicationContext("com/newlecture/spring/aop/app-context.xml");

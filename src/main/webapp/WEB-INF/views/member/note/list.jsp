@@ -29,9 +29,10 @@
 			<h1 class="hidden">노트목록</h1>
 			<ul class="">
 				<c:forEach var="note" items="${notes}">
-					<li>
+					<li class="text">
 						<div><a href="">${note.title}</a></div>
-						<div>${note.content }
+						<div class="">
+							<span class="text-concat">${note.content }</span>
 						</div>
 						<div><span>분류</span> <span>${note.regDate}</span></div>
 					</li>
