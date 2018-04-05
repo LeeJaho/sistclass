@@ -1,4 +1,4 @@
-package com.newlecture.controller.member;
+package com.newlecture.controller.author;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.newlecture.entity.Note;
-import com.newlecture.service.member.NoteService;
-@RequestMapping("/member/note/")
-@Controller("MemberNoteController")
+import com.newlecture.service.author.NoteService;
+@RequestMapping("/author/note/")
+@Controller("authorNoteController")
 public class NoteController {
 	
 	@Autowired
@@ -32,27 +33,30 @@ public class NoteController {
 		
 		List<Note> notes = service.getNoteList(1);
 		model.addAttribute("notes", notes);
-		return "member.note.list";
+		return "author.note.list";
 	}
 	
-	@RequestMapping("detail")
-	public String detail() {
+	@RequestMapping("{id}") //1 ,2 , 3 , 4 ,,,
+	public String detail(@PathVariable("id") Integer id, Model model) {
+		Note note = service.getNote(id);
 		
-		return "member/note/detail";
+		model.addAttribute("note", note);
+		
+		return "author.note.detail";
 	}
 	
 	
 	@RequestMapping("edit")
 	public String edit() {
 		
-		return "member/note/edit";
+		return "author.note.edit";
 	}
 	
 	//왜 GET, POST 나눴나? value 의미
 	@RequestMapping(value="reg", method=RequestMethod.GET)
 	public String reg() {
 		
-		return "member/note/reg";
+		return "author.note.reg";
 	}
 	
 	@RequestMapping(value="reg", method=RequestMethod.POST)

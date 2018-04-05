@@ -112,6 +112,17 @@ h1, h2, h3, h4, h5, h6{
 					margin-bottom: 5px;		
 				}
 				
+				.note-list li > div:nth-child(2){
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 3;
+					overflow: hidden;
+					
+					/* /*flex 지원 안하는 곳에선 이것 사용*/
+					line-height: 1.2em;
+					max-height: 3.6em; 
+				}
+				
 				
 				.note-list li > div:last-child{
 					font-size: 13px;
@@ -130,6 +141,45 @@ h1, h2, h3, h4, h5, h6{
 						
 					}
 					
+.btn-list{
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	border: 1px solid red;
+}
+
+.btn-list > ul{
+	border: 1px solid blue;
+	display: flex;
+	flex-direction: column;
+}
+
+.btn-list > ul > li{
+	background: pink;
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	right:0px;
+	bottom:0px;
+	border-radius: 25px;
+	
+	transition: 500ms;
+}
+
+.btn-list > ul > li:nth-child(1) {
+	order: 2;
+	background: #80ffff;
+	z-index: 3;
+}
+
+#edit-button.show {
+	bottom: 60px;
+}
+
+#delete-button.show {
+	bottom: 120px;	
+}
+
 
 					
 					

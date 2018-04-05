@@ -9,7 +9,8 @@
 			<h1 class="hidden">메인메뉴</h1>
 				<ul>
 					<li><a href=""><img src ="${ctx}/resources/images/ic_dehaze_black_24dp_1x.png"/></a></li>
-					<li><a href=""><img src ="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></a></li>
+					<li><a href="${ctx}/author/note/list">관리</a></li>
+					<%-- <li><a href=""><img src ="${ctx}/resources/images/ic_search_black_24dp_1x.png"/></a></li> --%>
 					<!-- <li></li> -->
 				</ul>
 		</nav>
