@@ -181,5 +181,21 @@ h1, h2, h3, h4, h5, h6{
 }
 
 
-					
+.aside{
+	width: 80%;
+	height: calc(100% - 46px);
+	background: #ffff80;
+	position: fixed;
+	top: 46px;
+	left: -80%;
+	
+	
+	transition: 1s;
+
+}
+
+.aside.show{
+	left: 0%;
+	box-shadow: 5px 5px 30px #797979;
+}		
 					

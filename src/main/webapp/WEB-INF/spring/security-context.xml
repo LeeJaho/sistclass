@@ -23,7 +23,8 @@
 	<!-- auto-config 알아서 해줘라? ->페이지 알아서 만들고 인증 권한 다 알아서 한다 -->
 	<http>
 	 <!-- 내가 요청할 페이지 -->
-		<form-login login-page="/member/login"/>
+		<form-login login-page="/member/login" default-target-url="/index"/>
+		<logout logout-success-url="/index" invalidate-session="true"/>
 		
 		<intercept-url pattern="/author/**" access="hasRole('ROLE_AUTHOR')"></intercept-url>
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"></intercept-url>
@@ -34,10 +35,18 @@
 		
 			<!-- 인증정보 제공 / 인증정보 맞고 권한 맞으면 위에 접근 가능하게-->
 			<authentication-provider>
-				<user-service>
+				<!-- bcrypt 최신화 암호화 기법? -->
+				<password-encoder hash="bcrypt"/>
+					<!-- 별칭으로 맞춰줘야한다 id , password, authority-->
+				<jdbc-user-service 
+					data-source-ref="dataSource"
+					users-by-username-query="select id, pwd password, 1 enabled from Member where id=?"
+					authorities-by-username-query="select memberId id, roleId authority from MemberRole where memberId=?"
+					/>
+				<!-- <user-service>
 					<user name="jaho" password="{noop}111" authorities="ROLE_AUTHOR, ROLE_ADMIN"/>
 					<user name="dragon" password="{noop}111" authorities="ROLE_AUTHOR"/>
-				</user-service>
+				</user-service> -->
 			</authentication-provider>
 	</authentication-manager>
 </beans:beans>

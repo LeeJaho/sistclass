@@ -38,7 +38,9 @@
 	<!-- Autowired가 필요한 곳에서 설정함 -->
     <context:annotation-config />
     <bean class="com.newlecture.dao.mybatis.MyBatisNoteDao"/>
-    <bean class="com.newlecture.service.NoteService"/>
-    <bean class="com.newlecture.service.author.NoteService"/>
     
+    <bean class="com.newlecture.service.MemberService"/>
+    <bean class="com.newlecture.service.NoteService"/>
+    
+    <bean class="com.newlecture.service.author.NoteService"/>
 </beans>
