@@ -32,6 +32,8 @@ public class NoteController {
 		return "note/list";
 	}
 	
+	
+	
 	/*
 	 * http: ~~~~~~ /note/detail?id=3 -> param으로 id를 읽는다
 	 * http: ~~~~~~ /note/3 -> param으로 id를 못읽는다 -> 경로기 때문에

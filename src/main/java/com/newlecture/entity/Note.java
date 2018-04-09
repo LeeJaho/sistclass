@@ -104,6 +104,8 @@ public class Note {
 	public void setChapterId(long chapterId) {
 		this.chapterId = chapterId;
 	}
+
+
 	
 
 }
