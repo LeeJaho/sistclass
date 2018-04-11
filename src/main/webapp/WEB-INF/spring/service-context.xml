@@ -33,14 +33,16 @@
       <constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>꺼내 쓸 수 있게 함
     </bean> -->
     
-
 	<!-- Autowired가 필요한 곳에서 설정함 -->
-    <context:annotation-config />
+    <!-- <context:annotation-config /> -->
     <!-- <bean class="com.newlecture.dao.mybatis.MyBatisNoteDao"/> -->
+    <!-- Annotation을 쓰기 위해서 -> Annotation 장소 알려주는 것 -->
+	<context:component-scan base-package="com.newlecture.service"/>
+	<context:component-scan base-package="com.newlecture.dao.hb"/>
     
     <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
     	<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-    	<property name="jdbcUrl" value="jdbc:mysql://vaio.notepubs.com/notepubsdb?serverTimezone=UTC"/>
+    	<property name="jdbcUrl" value="jdbc:mysql://vaio.notepubs.com/notepubsdb?serverTimezone=UTC&amp;autoReconnect=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
     	<property name="user" value="notepubs"/>
     	<property name="password" value="cclass"></property>
     	
@@ -69,6 +71,7 @@
     </bean>
     
     <bean class="com.newlecture.service.MemberService"/>
-    <bean class="com.newlecture.service.NoteService"/>
+    <!-- annotation으로 NoteService에 그냥 @service라고 함 -->
+    <!-- <bean class="com.newlecture.service.NoteService"/> -->
     <bean class="com.newlecture.service.author.NoteService"/>
 </beans>
